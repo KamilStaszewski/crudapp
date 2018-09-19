@@ -1,17 +1,5 @@
 import { UI_ACTIONS } from '../constants/action_types';
 
-export function updateName(userName) {
-  return (dispatch) => {
-    dispatch({ type: UI_ACTIONS.UPDATE_NAME, data: userName });
-  };
-}
-
-export function incrementCount() {
-  return (dispatch, getState) => {
-    const { count } = getState().ui;
-    return dispatch({ type: UI_ACTIONS.INCREMENT_COUNT, data: count + 1 });
-  };
-}
 
 export function fetchData() {
   return (dispatch) => {
@@ -21,10 +9,25 @@ export function fetchData() {
   } 
 }
 
+export function handleNameChange(value) {
+  return (dispatch) => {
+    console.log(value)
+    dispatch({ type: UI_ACTIONS.UPDATE_NAME, val: value});
+  };
+}
+
+export function handleEmailChange(value) {
+  return (dispatch) => {
+    console.log(value)
+    dispatch({ type: UI_ACTIONS.UPDATE_EMAIL, val: value});
+  };
+}
+
+
 export function addUser() {
   return (dispatch, getState) => {
-    const { users } = getState().ui
-    console.log(users)
-    dispatch({ type: UI_ACTIONS.ADD_USER, users:[users, {id: 3, name: 'Kamil', email: 'lala'}] });
+    const { users, name, email } = getState().ui
+    console.log(name)
+    dispatch({ type: UI_ACTIONS.ADD_USER, users:[...users, {id: 3, name: name, email: email}] });
   }
 }

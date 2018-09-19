@@ -12,23 +12,18 @@ class Userlist extends Component {
          data: this.props.ui.users
       }
     }
-
-    handleChange = (evt) => {
-        this.setState({ [evt.target.name]: evt.target.value });
-      }
     
     render() {
-        console.log(this.props.ui)
       return (
         <div>
           <input type="text"
                  value={this.state.username}
                  name="username"
-                 onChange={this.handleChange}/>
+                 onChange={(e) => this.props.uiActions.handleNameChange(e.target.value)}/>
           <input type="text" 
                 value={this.state.email}
                 name="email"
-                onChange={this.handleChange}/>
+                onChange={(e) => this.props.uiActions.handleEmailChange(e.target.value)}/>
         <table>
         <thead>
           <tr>
@@ -50,7 +45,7 @@ class Userlist extends Component {
         </tbody>
         <tfoot>
         </tfoot>
-        <button onClick={() => this.props.uiActions.addUser()}>add</button>
+        <button onClick={() => this.props.uiActions.addUser(this.state.username)}>add</button>
       </table>
       </div>
       )

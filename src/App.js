@@ -13,17 +13,9 @@ class App extends React.Component {
   
   
   render() {
-    const { userName, count, webSite } = this.props.ui;
     return (
       <div className="wrapper">
         <Userlist />
-        <label>Creator - <a href={webSite} target="_blank">{userName}</a></label>
-        <br />
-        <div>
-          Count is {count}
-          <button onClick={this.props.uiActions.incrementCount}>INCREMENT COUNT</button>
-          <button onClick={this.props.uiActions.fetchData}>fetch</button>
-        </div>
       </div>
     );
   }
