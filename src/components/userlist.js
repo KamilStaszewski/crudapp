@@ -12,16 +12,18 @@ class Userlist extends Component {
          data: this.props.ui.users
       }
     }
-    
+
+   
     render() {
+      console.log(this.props)
       return (
         <div>
           <input type="text"
-                 value={this.state.username}
+                 value={this.props.ui.inputName}
                  name="username"
                  onChange={(e) => this.props.uiActions.handleNameChange(e.target.value)}/>
           <input type="text" 
-                value={this.state.email}
+                value={this.props.ui.inputEmail}
                 name="email"
                 onChange={(e) => this.props.uiActions.handleEmailChange(e.target.value)}/>
         <table>

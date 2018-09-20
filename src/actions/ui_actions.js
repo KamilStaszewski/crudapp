@@ -11,14 +11,12 @@ export function fetchData() {
 
 export function handleNameChange(value) {
   return (dispatch) => {
-    console.log(value)
     dispatch({ type: UI_ACTIONS.UPDATE_NAME, val: value});
   };
 }
 
 export function handleEmailChange(value) {
   return (dispatch) => {
-    console.log(value)
     dispatch({ type: UI_ACTIONS.UPDATE_EMAIL, val: value});
   };
 }
@@ -27,7 +25,6 @@ export function handleEmailChange(value) {
 export function addUser() {
   return (dispatch, getState) => {
     const { users, name, email } = getState().ui
-    console.log(name)
-    dispatch({ type: UI_ACTIONS.ADD_USER, users:[...users, {id: 3, name: name, email: email}] });
+    dispatch({ type: UI_ACTIONS.ADD_USER, users:[...users, {id: users.length+1, name: name, email: email}] });
   }
 }
