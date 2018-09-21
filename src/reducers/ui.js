@@ -5,22 +5,15 @@ import { UI_ACTIONS } from '../constants/action_types';
 const initialState = { 
   users: [],
   name: '',
-  email: '',
-  inputName: undefined,
-  inputEmail: undefined
+  email: ''
 }
-// kolejna akcję trzeba zdispatchować, któraby resetowała inputy
 
 export default (state = initialState, action) => {
   switch (action.type) {
   case UI_ACTIONS.SET_REPOS: 
     return { ...state, users: action.users };
   case UI_ACTIONS.ADD_USER:
-    return {...state, users: action.users, inputName: '', inputEmail: '' };
-  case UI_ACTIONS.UPDATE_NAME:
-    return {...state, name: action.val };
-  case UI_ACTIONS.UPDATE_EMAIL:
-    return {...state, email: action.val};
+    return {...state, users: action.users};
   default:
     return state;
   }

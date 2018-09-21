@@ -9,23 +9,35 @@ class Userlist extends Component {
       super(props)
     
       this.state = {
-         data: this.props.ui.users
+         data: this.props.ui.users,
+         name: '',
+         email: ''
       }
+    }
+
+
+    handleChange = (evt) => {
+      this.setState({ [evt.target.name]: evt.target.value });
+    }
+
+
+
+    componentWillReceiveProps = () => {
+      this.setState({
+        name: ''
+      })
     }
 
    
     render() {
-      console.log(this.props)
       return (
         <div>
-          <input type="text"
-                 value={this.props.ui.inputName}
-                 name="username"
-                 onChange={(e) => this.props.uiActions.handleNameChange(e.target.value)}/>
-          <input type="text" 
-                value={this.props.ui.inputEmail}
-                name="email"
-                onChange={(e) => this.props.uiActions.handleEmailChange(e.target.value)}/>
+          <form onSubmit={(e) => this.props.uiActions.addUser(e, this.state.name, this.state.email)}>
+            <input type="text"
+                   name="name"
+                   value={this.state.name}
+                   onChange={this.handleChange}/>
+          </form>
         <table>
         <thead>
           <tr>
@@ -47,7 +59,6 @@ class Userlist extends Component {
         </tbody>
         <tfoot>
         </tfoot>
-        <button onClick={() => this.props.uiActions.addUser(this.state.username)}>add</button>
       </table>
       </div>
       )

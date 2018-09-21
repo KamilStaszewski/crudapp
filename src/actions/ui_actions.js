@@ -9,22 +9,24 @@ export function fetchData() {
   } 
 }
 
-export function handleNameChange(value) {
-  return (dispatch) => {
-    dispatch({ type: UI_ACTIONS.UPDATE_NAME, val: value});
-  };
-}
+// export function handleNameChange(value) {
+//   return (dispatch) => {
+//     dispatch({ type: UI_ACTIONS.UPDATE_NAME, val: value});
+//   };
+// }
 
-export function handleEmailChange(value) {
-  return (dispatch) => {
-    dispatch({ type: UI_ACTIONS.UPDATE_EMAIL, val: value});
-  };
-}
+// export function handleEmailChange(value) {
+//   return (dispatch) => {
+//     dispatch({ type: UI_ACTIONS.UPDATE_EMAIL, val: value});
+//   };
+// }
 
 
-export function addUser() {
+export function addUser(e, name, email) {
   return (dispatch, getState) => {
-    const { users, name, email } = getState().ui
+    e.preventDefault()
+    console.log(email)
+    const { users } = getState().ui
     dispatch({ type: UI_ACTIONS.ADD_USER, users:[...users, {id: users.length+1, name: name, email: email}] });
   }
 }
